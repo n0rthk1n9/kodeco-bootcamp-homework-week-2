@@ -55,16 +55,8 @@ struct PortraitView: View {
 
   var body: some View {
     VStack {
-      Text("Color Picker")
-        .font(.largeTitle)
-        .bold()
-        .foregroundColor(colorScheme == .dark ? .white : .black)
-      ChosenColorView(chosenColor: $colorPicker.chosenColor)
-        .padding(.bottom)
-      ColorSliderView(color: $colorPicker.redSliderValue, name: "Red", accentColor: Constants.Colors.redSliderAccentColor)
-      ColorSliderView(color: $colorPicker.greenSliderValue, name: "Green", accentColor: Constants.Colors.greenSliderAccentColor)
-      ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue", accentColor: Constants.Colors.blueSliderAccentColor)
-      SetColorButton(colorPicker: $colorPicker)
+      DisplayColorView(colorPicker: $colorPicker)
+      ChangeColorView(colorPicker: $colorPicker)
     }
     .background(colorScheme == .dark ? .black : .white)
     .padding(Constants.General.portraitViewPadding)
@@ -77,33 +69,42 @@ struct LandscapeView: View {
 
   var body: some View {
     HStack {
-      VStack {
-        Text("Color Picker")
-          .font(.largeTitle)
-          .bold()
-          .foregroundColor(colorScheme == .dark ? .white : .black)
-        ChosenColorView(chosenColor: $colorPicker.chosenColor)
-      }
-      .padding(.trailing)
-      VStack {
-        ColorSliderView(color: $colorPicker.redSliderValue, name: "Red", accentColor: Constants.Colors.redSliderAccentColor)
-        ColorSliderView(color: $colorPicker.greenSliderValue, name: "Green", accentColor: Constants.Colors.greenSliderAccentColor)
-        ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue", accentColor: Constants.Colors.blueSliderAccentColor)
-        SetColorButton(colorPicker: $colorPicker)
-      }
+      DisplayColorView(colorPicker: $colorPicker)
+      ChangeColorView(colorPicker: $colorPicker)
     }
     .background(colorScheme == .dark ? .black : .white)
     .padding(Constants.General.landscapeViewPadding)
   }
 }
 
-struct ChosenColorView: View {
-  @Binding var chosenColor: Color
+struct DisplayColorView: View {
+  @Binding var colorPicker: ColorPicker
+  @Environment(\.colorScheme) var colorScheme
 
   var body: some View {
-    RoundedRectangle(cornerRadius: 0)
-      .foregroundColor(chosenColor)
-      .border(Constants.Colors.chosenColorViewBorderColor, width: Constants.General.chosenColorViewBorder)
+    VStack {
+      Text("Color Picker")
+        .font(.largeTitle)
+        .bold()
+        .foregroundColor(colorScheme == .dark ? .white : .black)
+      RoundedRectangle(cornerRadius: 0)
+        .foregroundColor(colorPicker.chosenColor)
+        .border(Constants.Colors.chosenColorViewBorderColor, width: Constants.General.chosenColorViewBorder)
+    }
+  }
+}
+
+struct ChangeColorView: View {
+  @Binding var colorPicker: ColorPicker
+  @Environment(\.colorScheme) var colorScheme
+
+  var body: some View {
+    VStack {
+      ColorSliderView(color: $colorPicker.redSliderValue, name: "Red", accentColor: Constants.Colors.redSliderAccentColor)
+      ColorSliderView(color: $colorPicker.greenSliderValue, name: "Green", accentColor: Constants.Colors.greenSliderAccentColor)
+      ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue", accentColor: Constants.Colors.blueSliderAccentColor)
+      SetColorButton(colorPicker: $colorPicker)
+    }
   }
 }
 
