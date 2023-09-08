@@ -32,34 +32,23 @@
 
 import SwiftUI
 
-struct ContentView: View {
-  @State private var alertIsVisible: Bool = false
-  @State private var redColor: Double = 0.0
-  @State private var greenColor: Double = 0.0
-  @State private var blueColor: Double = 0.0
-  @State private var foregroundColor = Color(red: 0, green: 0, blue: 0)
+struct ColorSliderView: View {
+  @Binding var color: Double
+  @State var name: String
 
   var body: some View {
     VStack {
-      Text("Color Picker")
-        .font(.largeTitle)
-      RoundedRectangle(cornerRadius: 0)
-        .foregroundColor(foregroundColor)
-        .border(.black)
-      ColorSliderView(color: $redColor, name: "Red")
-      ColorSliderView(color: $greenColor, name: "Green")
-      ColorSliderView(color: $blueColor, name: "Blue")
-      Button("Set Color") {
-        foregroundColor = Color(red: redColor / 255, green: greenColor / 255, blue: blueColor / 255)
+      Text(name)
+      HStack {
+        Slider(value: $color, in: 0 ... 255)
+        Text("\(Int(color.rounded()))")
       }
     }
-    .background(Color.white)
-    .padding(20)
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ColorSliderView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    ColorSliderView(color: .constant(22), name: "Red")
   }
 }
