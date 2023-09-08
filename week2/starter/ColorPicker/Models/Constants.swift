@@ -42,6 +42,7 @@ enum Constants {
   }
 
   enum Colors {
+    public static let chosenColorViewInitialColor = Color(red: 100.0, green: 50.0, blue: 0.0)
     public static let chosenColorViewBorderColor = Color("ChosenColorViewBorderColor")
     public static let redSliderAccentColor = Color("RedSliderAccentColor")
     public static let greenSliderAccentColor = Color("GreenSliderAccentColor")
