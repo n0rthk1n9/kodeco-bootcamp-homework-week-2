@@ -33,10 +33,6 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var redSliderValue: Double = 0.0
-  @State private var greenSliderValue: Double = 0.0
-  @State private var blueSliderValue: Double = 0.0
-  @State private var chosenColor = Color(red: 0, green: 0, blue: 0)
   @State private var colorPicker = ColorPicker()
 
   var body: some View {
