@@ -35,6 +35,7 @@ import SwiftUI
 struct ColorSliderView: View {
   @Environment(\.colorScheme) var colorScheme
   @Binding var color: Double
+
   let name: String
   let accentColor: Color
 

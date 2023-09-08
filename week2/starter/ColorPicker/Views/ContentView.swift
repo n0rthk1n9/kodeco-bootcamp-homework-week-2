@@ -89,7 +89,7 @@ struct DisplayColorView: View {
         .foregroundColor(colorScheme == .dark ? .white : .black)
       RoundedRectangle(cornerRadius: 0)
         .foregroundColor(colorPicker.chosenColor)
-        .border(Constants.Colors.chosenColorViewBorderColor, width: Constants.General.chosenColorViewBorder)
+        .border(Constants.Colors.displayColorViewBorderColor, width: Constants.General.displayColorViewBorderWidth)
     }
   }
 }

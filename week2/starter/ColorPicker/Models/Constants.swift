@@ -35,7 +35,7 @@ import SwiftUI
 
 enum Constants {
   enum General {
-    public static let chosenColorViewBorder = CGFloat(6)
+    public static let displayColorViewBorderWidth = CGFloat(10)
     public static let buttonPadding = CGFloat(18)
     public static let buttonCornerRadius = CGFloat(21)
     public static let buttonStrokeWidth = CGFloat(1)
@@ -48,7 +48,7 @@ enum Constants {
 
   enum Colors {
     public static let chosenColorViewInitialColor = Color(red: General.redSliderInitialValue / 255, green: General.greenSliderInitialValue / 255, blue: General.blueSliderInitialValue / 255)
-    public static let chosenColorViewBorderColor = Color("ChosenColorViewBorderColor")
+    public static let displayColorViewBorderColor = Color.gray.opacity(0.5)
     public static let redSliderAccentColor = Color("RedSliderAccentColor")
     public static let greenSliderAccentColor = Color("GreenSliderAccentColor")
     public static let blueSliderAccentColor = Color("BlueSliderAccentColor")
