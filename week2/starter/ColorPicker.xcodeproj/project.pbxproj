@@ -13,6 +13,7 @@
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
 		573BBE4E2AAB3B2F006B88DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* ContentView.swift */; };
 		57F3D6D32AAB3C46004C8CE4 /* ColorSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F3D6D22AAB3C46004C8CE4 /* ColorSliderView.swift */; };
+		57F3D6D62AAB4313004C8CE4 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F3D6D52AAB4313004C8CE4 /* ColorPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57F3D6D22AAB3C46004C8CE4 /* ColorSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSliderView.swift; sourceTree = "<group>"; };
+		57F3D6D52AAB4313004C8CE4 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				573BBE492AAB3AB4006B88DE /* App */,
 				573BBE4B2AAB3ADA006B88DE /* Views */,
+				57F3D6D42AAB42ED004C8CE4 /* Models */,
 				18D775CE22AD944400AE281E /* Info.plist */,
 				18D775C822AD944400AE281E /* Preview Content */,
 			);
@@ -91,6 +94,14 @@
 				57F3D6D22AAB3C46004C8CE4 /* ColorSliderView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		57F3D6D42AAB42ED004C8CE4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				57F3D6D52AAB4313004C8CE4 /* ColorPicker.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				573BBE4E2AAB3B2F006B88DE /* ContentView.swift in Sources */,
+				57F3D6D62AAB4313004C8CE4 /* ColorPicker.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				57F3D6D32AAB3C46004C8CE4 /* ColorSliderView.swift in Sources */,
 			);

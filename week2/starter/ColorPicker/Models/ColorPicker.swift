@@ -30,52 +30,16 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
+import Foundation
 import SwiftUI
 
-struct ContentView: View {
-  @State private var redSliderValue: Double = 0.0
-  @State private var greenSliderValue: Double = 0.0
-  @State private var blueSliderValue: Double = 0.0
-  @State private var chosenColor = Color(red: 0, green: 0, blue: 0)
-  @State private var colorPicker = ColorPicker()
+struct ColorPicker {
+  var redSliderValue = 0.0
+  var greenSliderValue = 0.0
+  var blueSliderValue = 0.0
+  var chosenColor = Color(red: 0.0, green: 0.0, blue: 0.0)
 
-  var body: some View {
-    VStack {
-      Text("Color Picker")
-        .font(.largeTitle)
-      ChosenColorView(chosenColor: $colorPicker.chosenColor)
-      ColorSliderView(color: $colorPicker.redSliderValue, name: "Red")
-      ColorSliderView(color: $colorPicker.greenSliderValue, name: "Green")
-      ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue")
-      SetColorButton(colorPicker: $colorPicker)
-    }
-    .background(Color.white)
-    .padding(20)
-  }
-}
-
-struct ChosenColorView: View {
-  @Binding var chosenColor: Color
-
-  var body: some View {
-    RoundedRectangle(cornerRadius: 0)
-      .foregroundColor(chosenColor)
-      .border(.black)
-  }
-}
-
-struct SetColorButton: View {
-  @Binding var colorPicker: ColorPicker
-
-  var body: some View {
-    Button("Set Color") {
-      colorPicker.setChosenColor()
-    }
-  }
-}
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
+  mutating func setChosenColor() {
+    chosenColor = Color(red: redSliderValue / 255, green: greenSliderValue / 255, blue: blueSliderValue / 255)
   }
 }
