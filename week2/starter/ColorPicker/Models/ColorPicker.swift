@@ -37,7 +37,7 @@ struct ColorPicker {
   var redSliderValue = 0.0
   var greenSliderValue = 0.0
   var blueSliderValue = 0.0
-  var chosenColor = Color(red: 0.0, green: 0.0, blue: 0.0)
+  var chosenColor = Color(red: 100.0, green: 60.0, blue: 0.0)
 
   mutating func setChosenColor() {
     chosenColor = Color(red: redSliderValue / 255, green: greenSliderValue / 255, blue: blueSliderValue / 255)
