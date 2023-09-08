@@ -34,9 +34,9 @@ import Foundation
 import SwiftUI
 
 struct ColorPicker {
-  var redSliderValue = 0.0
-  var greenSliderValue = 0.0
-  var blueSliderValue = 0.0
+  var redSliderValue = Constants.General.redSliderInitialValue
+  var greenSliderValue = Constants.General.greenSliderInitialValue
+  var blueSliderValue = Constants.General.blueSliderInitialValue
   var chosenColor = Constants.Colors.chosenColorViewInitialColor
 
   mutating func setChosenColor() {

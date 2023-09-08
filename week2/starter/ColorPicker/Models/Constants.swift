@@ -39,10 +39,13 @@ enum Constants {
     public static let buttonPadding = CGFloat(18)
     public static let buttonCornerRadius = CGFloat(21)
     public static let buttonStrokeWidth = CGFloat(1)
+    public static let redSliderInitialValue = 255.0
+    public static let greenSliderInitialValue = 214.0
+    public static let blueSliderInitialValue = 0.0
   }
 
   enum Colors {
-    public static let chosenColorViewInitialColor = Color(red: 100.0, green: 50.0, blue: 0.0)
+    public static let chosenColorViewInitialColor = Color(red: General.redSliderInitialValue / 255, green: General.greenSliderInitialValue / 255, blue: General.blueSliderInitialValue / 255)
     public static let chosenColorViewBorderColor = Color("ChosenColorViewBorderColor")
     public static let redSliderAccentColor = Color("RedSliderAccentColor")
     public static let greenSliderAccentColor = Color("GreenSliderAccentColor")
