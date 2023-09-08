@@ -42,6 +42,8 @@ enum Constants {
     public static let redSliderInitialValue = 255.0
     public static let greenSliderInitialValue = 214.0
     public static let blueSliderInitialValue = 0.0
+    public static let landscapeViewPadding = CGFloat(20)
+    public static let portraitViewPadding = CGFloat(20)
   }
 
   enum Colors {

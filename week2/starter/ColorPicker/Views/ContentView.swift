@@ -67,7 +67,7 @@ struct PortraitView: View {
       SetColorButton(colorPicker: $colorPicker)
     }
     .background(colorScheme == .dark ? .black : .white)
-    .padding(20)
+    .padding(Constants.General.portraitViewPadding)
   }
 }
 
@@ -93,7 +93,7 @@ struct LandscapeView: View {
       }
     }
     .background(colorScheme == .dark ? .black : .white)
-    .padding(20)
+    .padding(Constants.General.landscapeViewPadding)
   }
 }
 
