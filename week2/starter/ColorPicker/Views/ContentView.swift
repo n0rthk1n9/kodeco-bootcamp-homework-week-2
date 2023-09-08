@@ -56,6 +56,7 @@ struct PortraitView: View {
   var body: some View {
     VStack {
       DisplayColorView(colorPicker: $colorPicker)
+        .padding(.bottom)
       ChangeColorView(colorPicker: $colorPicker)
     }
     .background(colorScheme == .dark ? .black : .white)
@@ -70,6 +71,7 @@ struct LandscapeView: View {
   var body: some View {
     HStack {
       DisplayColorView(colorPicker: $colorPicker)
+        .padding(.trailing)
       ChangeColorView(colorPicker: $colorPicker)
     }
     .background(colorScheme == .dark ? .black : .white)
