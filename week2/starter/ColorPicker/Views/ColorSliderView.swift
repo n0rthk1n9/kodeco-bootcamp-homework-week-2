@@ -33,6 +33,7 @@
 import SwiftUI
 
 struct ColorSliderView: View {
+  @Environment(\.colorScheme) var colorScheme
   @Binding var color: Double
   let name: String
   let accentColor: Color
@@ -40,10 +41,12 @@ struct ColorSliderView: View {
   var body: some View {
     VStack {
       Text(name)
+        .foregroundColor(colorScheme == .dark ? .white : .black)
       HStack {
         Slider(value: $color, in: 0 ... 255)
           .tint(accentColor)
         Text("\(Int(color.rounded()))")
+          .foregroundColor(colorScheme == .dark ? .white : .black)
       }
     }
   }

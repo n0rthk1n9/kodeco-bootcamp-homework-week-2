@@ -34,11 +34,13 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var colorPicker = ColorPicker()
+  @Environment(\.colorScheme) var colorScheme
 
   var body: some View {
     VStack {
       Text("Color Picker")
         .font(.largeTitle)
+        .foregroundColor(colorScheme == .dark ? .white : .black)
       ChosenColorView(chosenColor: $colorPicker.chosenColor)
         .padding(.bottom)
       ColorSliderView(color: $colorPicker.redSliderValue, name: "Red", accentColor: Constants.Colors.redSliderAccentColor)
@@ -46,7 +48,7 @@ struct ContentView: View {
       ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue", accentColor: Constants.Colors.blueSliderAccentColor)
       SetColorButton(colorPicker: $colorPicker)
     }
-    .background(Color.white)
+    .background(colorScheme == .dark ? .black : .white)
     .padding(20)
   }
 }
@@ -74,5 +76,7 @@ struct SetColorButton: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+    ContentView()
+      .preferredColorScheme(.dark)
   }
 }
