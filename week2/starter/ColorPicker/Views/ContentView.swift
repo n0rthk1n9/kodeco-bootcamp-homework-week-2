@@ -33,9 +33,9 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var redColor: Double = 0.0
-  @State private var greenColor: Double = 0.0
-  @State private var blueColor: Double = 0.0
+  @State private var redSliderValue: Double = 0.0
+  @State private var greenSliderValue: Double = 0.0
+  @State private var blueSliderValue: Double = 0.0
   @State private var foregroundColor = Color(red: 0, green: 0, blue: 0)
 
   var body: some View {
@@ -45,15 +45,23 @@ struct ContentView: View {
       RoundedRectangle(cornerRadius: 0)
         .foregroundColor(foregroundColor)
         .border(.black)
-      ColorSliderView(color: $redColor, name: "Red")
-      ColorSliderView(color: $greenColor, name: "Green")
-      ColorSliderView(color: $blueColor, name: "Blue")
+      ColorSliderView(color: $redSliderValue, name: "Red")
+      ColorSliderView(color: $greenSliderValue, name: "Green")
+      ColorSliderView(color: $blueSliderValue, name: "Blue")
       Button("Set Color") {
-        foregroundColor = Color(red: redColor / 255, green: greenColor / 255, blue: blueColor / 255)
+        foregroundColor = getSliderValueColor()
       }
     }
     .background(Color.white)
     .padding(20)
+  }
+
+  func getSliderValueColor() -> Color {
+    Color(
+      red: redSliderValue / 255,
+      green: greenSliderValue / 255,
+      blue: blueSliderValue / 255
+    )
   }
 }
 
