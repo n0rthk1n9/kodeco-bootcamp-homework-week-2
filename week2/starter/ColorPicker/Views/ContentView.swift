@@ -41,9 +41,9 @@ struct ContentView: View {
         .font(.largeTitle)
       ChosenColorView(chosenColor: $colorPicker.chosenColor)
         .padding(.bottom)
-      ColorSliderView(color: $colorPicker.redSliderValue, name: "Red")
-      ColorSliderView(color: $colorPicker.greenSliderValue, name: "Green")
-      ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue")
+      ColorSliderView(color: $colorPicker.redSliderValue, name: "Red", accentColor: Constants.Colors.redSliderAccentColor)
+      ColorSliderView(color: $colorPicker.greenSliderValue, name: "Green", accentColor: Constants.Colors.greenSliderAccentColor)
+      ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue", accentColor: Constants.Colors.blueSliderAccentColor)
       SetColorButton(colorPicker: $colorPicker)
     }
     .background(Color.white)
