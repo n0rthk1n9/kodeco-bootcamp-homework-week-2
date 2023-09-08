@@ -39,9 +39,9 @@ struct ContentView: View {
 
   var body: some View {
     let isBigIphoneLandscape = verticalSizeClass == .compact && horizontalSizeClass == .regular
-    let isNormalOrSmallIphoneLandscape = verticalSizeClass == .compact && horizontalSizeClass == .compact
+    let isSmallIphoneLandscape = verticalSizeClass == .compact && horizontalSizeClass == .compact
 
-    if isBigIphoneLandscape || isNormalOrSmallIphoneLandscape {
+    if isBigIphoneLandscape || isSmallIphoneLandscape {
       LandscapeView(colorPicker: $colorPicker)
     } else {
       PortraitView(colorPicker: $colorPicker)
@@ -130,6 +130,8 @@ struct SetColorButton: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+    ContentView()
+      .previewDevice("iPhone 14 Pro Max")
     ContentView()
       .preferredColorScheme(.dark)
     ContentView()
