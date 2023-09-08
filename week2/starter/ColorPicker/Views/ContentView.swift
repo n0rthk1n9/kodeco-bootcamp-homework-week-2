@@ -34,6 +34,23 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var colorPicker = ColorPicker()
+  @Environment(\.verticalSizeClass) var verticalSizeClass
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
+  var body: some View {
+    let isBigIphoneLandscape = verticalSizeClass == .compact && horizontalSizeClass == .regular
+    let isNormalOrSmallIphoneLandscape = verticalSizeClass == .compact && horizontalSizeClass == .compact
+
+    if isBigIphoneLandscape || isNormalOrSmallIphoneLandscape {
+      LandscapeView(colorPicker: $colorPicker)
+    } else {
+      PortraitView(colorPicker: $colorPicker)
+    }
+  }
+}
+
+struct PortraitView: View {
+  @Binding var colorPicker: ColorPicker
   @Environment(\.colorScheme) var colorScheme
 
   var body: some View {
@@ -48,6 +65,32 @@ struct ContentView: View {
       ColorSliderView(color: $colorPicker.greenSliderValue, name: "Green", accentColor: Constants.Colors.greenSliderAccentColor)
       ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue", accentColor: Constants.Colors.blueSliderAccentColor)
       SetColorButton(colorPicker: $colorPicker)
+    }
+    .background(colorScheme == .dark ? .black : .white)
+    .padding(20)
+  }
+}
+
+struct LandscapeView: View {
+  @Binding var colorPicker: ColorPicker
+  @Environment(\.colorScheme) var colorScheme
+
+  var body: some View {
+    HStack {
+      VStack {
+        Text("Color Picker")
+          .font(.largeTitle)
+          .bold()
+          .foregroundColor(colorScheme == .dark ? .white : .black)
+        ChosenColorView(chosenColor: $colorPicker.chosenColor)
+      }
+      .padding(.trailing)
+      VStack {
+        ColorSliderView(color: $colorPicker.redSliderValue, name: "Red", accentColor: Constants.Colors.redSliderAccentColor)
+        ColorSliderView(color: $colorPicker.greenSliderValue, name: "Green", accentColor: Constants.Colors.greenSliderAccentColor)
+        ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue", accentColor: Constants.Colors.blueSliderAccentColor)
+        SetColorButton(colorPicker: $colorPicker)
+      }
     }
     .background(colorScheme == .dark ? .black : .white)
     .padding(20)
@@ -89,5 +132,12 @@ struct ContentView_Previews: PreviewProvider {
     ContentView()
     ContentView()
       .preferredColorScheme(.dark)
+    ContentView()
+      .previewDevice("iPhone 14 Pro Max")
+      .previewInterfaceOrientation(.landscapeRight)
+    ContentView()
+      .previewDevice("iPhone 14 Pro")
+      .preferredColorScheme(.dark)
+      .previewInterfaceOrientation(.landscapeRight)
   }
 }
