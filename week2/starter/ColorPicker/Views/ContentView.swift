@@ -36,24 +36,43 @@ struct ContentView: View {
   @State private var redSliderValue: Double = 0.0
   @State private var greenSliderValue: Double = 0.0
   @State private var blueSliderValue: Double = 0.0
-  @State private var foregroundColor = Color(red: 0, green: 0, blue: 0)
+  @State private var chosenColor = Color(red: 0, green: 0, blue: 0)
 
   var body: some View {
     VStack {
       Text("Color Picker")
         .font(.largeTitle)
-      RoundedRectangle(cornerRadius: 0)
-        .foregroundColor(foregroundColor)
-        .border(.black)
+      ChosenColorView(chosenColor: $chosenColor)
       ColorSliderView(color: $redSliderValue, name: "Red")
       ColorSliderView(color: $greenSliderValue, name: "Green")
       ColorSliderView(color: $blueSliderValue, name: "Blue")
-      Button("Set Color") {
-        foregroundColor = getSliderValueColor()
-      }
+      SetColorButton(chosenColor: $chosenColor, redSliderValue: $redSliderValue, greenSliderValue: $greenSliderValue, blueSliderValue: $blueSliderValue)
     }
     .background(Color.white)
     .padding(20)
+  }
+}
+
+struct ChosenColorView: View {
+  @Binding var chosenColor: Color
+
+  var body: some View {
+    RoundedRectangle(cornerRadius: 0)
+      .foregroundColor(chosenColor)
+      .border(.black)
+  }
+}
+
+struct SetColorButton: View {
+  @Binding var chosenColor: Color
+  @Binding var redSliderValue: Double
+  @Binding var greenSliderValue: Double
+  @Binding var blueSliderValue: Double
+
+  var body: some View {
+    Button("Set Color") {
+      chosenColor = getSliderValueColor()
+    }
   }
 
   func getSliderValueColor() -> Color {
