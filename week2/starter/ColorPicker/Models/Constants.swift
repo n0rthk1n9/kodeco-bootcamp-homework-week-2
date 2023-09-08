@@ -36,6 +36,9 @@ import SwiftUI
 enum Constants {
   enum General {
     public static let chosenColorViewBorder = CGFloat(6)
+    public static let buttonPadding = CGFloat(18)
+    public static let buttonCornerRadius = CGFloat(21)
+    public static let buttonStrokeWidth = CGFloat(1)
   }
 
   enum Colors {

@@ -40,6 +40,7 @@ struct ContentView: View {
     VStack {
       Text("Color Picker")
         .font(.largeTitle)
+        .bold()
         .foregroundColor(colorScheme == .dark ? .white : .black)
       ChosenColorView(chosenColor: $colorPicker.chosenColor)
         .padding(.bottom)
@@ -67,8 +68,18 @@ struct SetColorButton: View {
   @Binding var colorPicker: ColorPicker
 
   var body: some View {
-    Button("Set Color") {
+    Button {
       colorPicker.setChosenColor()
+    } label: {
+      Text("Set Color")
+        .padding(Constants.General.buttonPadding)
+        .background(.blue)
+        .foregroundColor(.white)
+        .cornerRadius(Constants.General.buttonCornerRadius)
+        .overlay {
+          RoundedRectangle(cornerRadius: Constants.General.buttonCornerRadius)
+            .strokeBorder(Color.white, lineWidth: Constants.General.buttonStrokeWidth)
+        }
     }
   }
 }
