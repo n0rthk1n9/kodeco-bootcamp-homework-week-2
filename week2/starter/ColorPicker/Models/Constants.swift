@@ -30,49 +30,15 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
+import Foundation
 import SwiftUI
 
-struct ContentView: View {
-  @State private var colorPicker = ColorPicker()
-
-  var body: some View {
-    VStack {
-      Text("Color Picker")
-        .font(.largeTitle)
-      ChosenColorView(chosenColor: $colorPicker.chosenColor)
-        .padding(.bottom)
-      ColorSliderView(color: $colorPicker.redSliderValue, name: "Red")
-      ColorSliderView(color: $colorPicker.greenSliderValue, name: "Green")
-      ColorSliderView(color: $colorPicker.blueSliderValue, name: "Blue")
-      SetColorButton(colorPicker: $colorPicker)
-    }
-    .background(Color.white)
-    .padding(20)
+enum Constants {
+  enum General {
+    public static let chosenColorViewBorder = CGFloat(6)
   }
-}
 
-struct ChosenColorView: View {
-  @Binding var chosenColor: Color
-
-  var body: some View {
-    RoundedRectangle(cornerRadius: 0)
-      .foregroundColor(chosenColor)
-      .border(Constants.Colors.chosenColorViewBorderColor, width: Constants.General.chosenColorViewBorder)
-  }
-}
-
-struct SetColorButton: View {
-  @Binding var colorPicker: ColorPicker
-
-  var body: some View {
-    Button("Set Color") {
-      colorPicker.setChosenColor()
-    }
-  }
-}
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
+  enum Colors {
+    public static let chosenColorViewBorderColor = Color("ChosenColorViewBorderColor")
   }
 }
